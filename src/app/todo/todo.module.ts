@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { CreateComponent } from './create/create.component';
 
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoService } from '../services/todo.service';
 
 @NgModule({
   declarations: [CreateComponent],
@@ -17,8 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
-  exports:[CreateComponent]
+  exports: [CreateComponent],
+  providers: [TodoService],
 })
-export class TodoModule { }
+export class TodoModule {}
