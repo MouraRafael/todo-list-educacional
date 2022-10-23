@@ -33,8 +33,8 @@ export class CreateComponent implements OnInit {
     todo.dataCriacao = new Date();
     todo.status = TodoStatus.PENDENTE;
 
+
     this.todoService.cadastrar(todo);
-    console.log(todo);
   }
 
   get nome() {

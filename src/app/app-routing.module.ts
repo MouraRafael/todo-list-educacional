@@ -5,6 +5,10 @@ import { ListComponent } from './todo/list/list.component';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo: 'todo/list',
+    pathMatch: 'full'
+  },{
     path:'todo/create',
     component: CreateComponent
   },
