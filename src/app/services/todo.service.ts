@@ -10,14 +10,15 @@ export class TodoService {
   constructor() {}
 
   cadastrar(todo: TodoModel): void {
-    let todos = this.listaTodos();
+    let todos:TodoModel[] = this.listaTodos();
+    console.log(todos)
+
     todo.id = uuid.v4();
 
-    todos.push(todo);
-    localStorage['todos'] = JSON.stringify(todo);
-    localStorage.setItem('todos', JSON.stringify(todos));
 
-    console.log('[todos]', localStorage['todos']);
+    todos.push(todo)
+
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   atualizar(todo: TodoModel) {
@@ -32,9 +33,21 @@ export class TodoService {
 
     localStorage.setItem('number', JSON.stringify(todos));
   }
+  listarPorID(id:string):TodoModel{
+    const todos:TodoModel[] = this.listaTodos();
+    let todo!:TodoModel;
 
+    for(let i = 0; i< todos.length ; i++){
+      if (todos[i].id === id){
+        todo = todos[i];
+        break;
+      }
+    }
+    return todo;
+  }
   listaTodos(): TodoModel[] {
-    return JSON.parse(localStorage['todos']) ?? []; //Checa se o localStorage todos existe, e faz um retorno de acordo
+    let listagem = JSON.parse(localStorage.getItem('todos')!) as TodoModel[] ?? [];
+    return listagem;     //Checa se o localStorage todos existe, e faz um retorno de acordo
   }
 
   remover(id: string): void {
