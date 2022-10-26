@@ -3,6 +3,8 @@ import { TodoService } from 'src/app/services/todo.service';
 import { TodoModel } from '../models/todo.model';
 import { TodoStatusLabel } from "../enums/status.enum";
 import { MatTableDataSource } from '@angular/material/table';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +18,13 @@ export class ListComponent implements OnInit {
   clickedRows!: TodoModel
 
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer:DomSanitizer) {
+      this.matIconRegistry.addSvgIcon(
+        "kickstarter",
+        this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icones/kickstarter.svg"))
+    }
 
   ngOnInit(): void {
 

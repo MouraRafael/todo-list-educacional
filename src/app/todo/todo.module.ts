@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from '../services/todo.service';
 import { ListComponent } from './list/list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [CreateComponent, ListComponent],
@@ -22,7 +23,8 @@ import { ListComponent } from './list/list.component';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
   ],
   exports: [CreateComponent],
   providers: [TodoService],
