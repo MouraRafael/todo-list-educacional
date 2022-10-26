@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +21,8 @@ import { ListComponent } from './list/list.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
+    MatTableModule
   ],
   exports: [CreateComponent],
   providers: [TodoService],

@@ -51,8 +51,17 @@ export class TodoService {
   }
 
   remover(id: string): void {
+    //todos.filter((todo) => todo.id !== id);
     let todos = this.listaTodos();
-    todos.filter((todo) => todo.id !== id);
+
+    let novoTodos:TodoModel[] = [];
+    for(let i = 0; i < todos.length; i++) {
+      if(todos[i].id !== id) {
+        novoTodos.push(todos[i]);
+      }
+    }
+
+    todos = novoTodos;
 
     localStorage.setItem('todos', JSON.stringify(todos));
   }
