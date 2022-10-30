@@ -1,4 +1,9 @@
 <h1>To Dos</h1>
+<div class="btn-table-container">
+  <button mat-raised-button class="btn-table" color="primary">editar</button>
+  <button mat-raised-button type="submit" (click)="remover(clickedRow.id)" class="btn-table" color="warn" [disabled]="!clickedRow || !dataSource">Enviar</button>
+
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- <tr mat-header-row *matHeaderRowDef="">
     <th mat-header-cell>Todo</th>
@@ -59,10 +64,6 @@
   </ng-container>
 
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row;columns:  displayedColumns"></tr>
-
-
   <ng-container matColumnDef="noRecord">
     <td mat-footer-cell *matFooterCellDef>Nenhuma Tarefa Cadastrada</td>
   </ng-container>
@@ -70,4 +71,10 @@
   <ng-template [ngIf]="dataSource.data.length === 0">
     <tr mat-footer-row *matFooterRowDef="['noRecord']"></tr>
   </ng-template>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row (click)="clickedRow = row" *matRowDef="let row; columns:  displayedColumns"></tr>
 </table>
+
+<div *ngIf="clickedRow">{{clickedRow.nome}}</div>

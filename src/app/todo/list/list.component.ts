@@ -13,9 +13,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ListComponent implements OnInit {
   todos!: TodoModel[];
-  displayedColumns: string[] = ['todo','status','dataCriacao','dataFinalizacao','edit','remove']
-  dataSource!:MatTableDataSource<TodoModel>
-  clickedRows!: TodoModel
+  displayedColumns: string[] = ['todo','status','dataCriacao','dataFinalizacao','edit','remove'];
+  dataSource!:MatTableDataSource<TodoModel>;
+
+  clickedRow!:TodoModel;
 
 
   constructor(private todoService: TodoService,

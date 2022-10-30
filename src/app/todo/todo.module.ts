@@ -13,18 +13,21 @@ import { TodoService } from '../services/todo.service';
 import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
 
+const materialModules = [
+  MatFormFieldModule,
+  ReactiveFormsModule,
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatTableModule,
+]
 @NgModule({
   declarations: [CreateComponent, ListComponent],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatTableModule,
     HttpClientModule,
+    ...materialModules
   ],
   exports: [CreateComponent],
   providers: [TodoService],

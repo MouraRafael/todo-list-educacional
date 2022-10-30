@@ -17,10 +17,12 @@ table {
 }
 
 .btn-table-container {
+  margin-inline: 5%;
   padding-bottom: 16px;
 }
 
 .btn-table {
+
   margin-left: 8px;
 }
 
