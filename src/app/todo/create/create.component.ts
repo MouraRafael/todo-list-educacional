@@ -11,6 +11,7 @@ import { TodoModel } from '../models/todo.model';
 })
 export class CreateComponent implements OnInit {
   todoForm!: FormGroup;
+  msg!:string;
 
   constructor(private formBuilder: FormBuilder, private todoService:TodoService) {}
 
@@ -20,7 +21,7 @@ export class CreateComponent implements OnInit {
         '', //valor inicial do input(elemento)
         [
           Validators.required, //Validação de campo requerido
-          Validators.pattern(/[a-zAZ]/), //Validação de patter/regex
+          Validators.pattern(/[a-zA-Z]/), // "A-zÁ-ú" Validação de patter/regex
           Validators.minLength(4), // tamanho mínimo de caracteres
           Validators.maxLength(150), // tamanho máximo de caracteres
         ],
@@ -35,6 +36,8 @@ export class CreateComponent implements OnInit {
 
 
     this.todoService.cadastrar(todo);
+
+    this.msg = "Cadastrado com sucesso"
   }
 
   get nome() {

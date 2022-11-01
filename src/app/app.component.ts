@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Senac Tarefas';
 
-showFiller:boolean = false;
 
+constructor(private router:Router){}
+toCreate(){
+  this.router.navigate(["/todo/create"])
+}
+
+toList(){
+  this.router.navigate(["/todo/list"])
+}
 
 }

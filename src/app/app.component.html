@@ -1,31 +1,8 @@
-<!-- <mat-drawer-container class="menu-container" autosize>
-  <mat-drawer #drawer class="menu-sidenav" mode="side">
-    <p>{{title}}</p>
-    <p *ngIf="showFiller">Aula 05 de Angular</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Exibe Texto
-    </button>
-  </mat-drawer>
-    <div class="sidenav-content">
-      <button type="button" mat-raised-button (click)="drawer.toggle()">Click</button>
-      <router-outlet></router-outlet>
-    </div>
-
-</mat-drawer-container> -->
-
-<!-- Versão do professor -->
-<!-- <mat-drawer-container class="menu-container" autosize>
-  <mat-drawer #drawer class="menu-sidenav" mode="side">
-    <p>{{title}}</p>
-    <p *ngIf="showFiller">Aula 05 de Angular</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Exibe texto
-    </button>
-  </mat-drawer>
-  <div class="sidenav-content">
-    <button type="button" mat-raised-button (click)="drawer.toggle()">Click</button>
-    <router-outlet></router-outlet>
+<section>
+  <div class="btn-menu-container">
+    <button class="btn-menu" (click)="toCreate()" mat-button color="primary">Create</button>
+    <button class="btn-menu" (click)="toList()" mat-button color="warn">List</button>
+    <button class="btn-menu" mat-button color="">Edit</button>
   </div>
-</mat-drawer-container> -->
-<app-create></app-create>
+</section>
 <router-outlet></router-outlet>

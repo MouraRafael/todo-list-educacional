@@ -1,6 +1,6 @@
 <h1>To Dos</h1>
 <div class="btn-table-container">
-  <button mat-raised-button class="btn-table" color="primary">editar</button>
+  <button mat-raised-button class="btn-table" color="primary" (click)="editar(clickedRow.id)">editar</button>
   <button mat-raised-button type="submit" (click)="remover(clickedRow.id)" class="btn-table" color="warn" [disabled]="!clickedRow || !dataSource">Enviar</button>
 
 </div>
@@ -55,7 +55,7 @@
 
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef> Editar Tarefa</th>
-    <td mat-cell id="edit" *matCellDef="let element" (click)="editar(element.id)"><a href="#"><mat-icon>edit</mat-icon></a></td>
+    <td mat-cell id="edit" *matCellDef="let element" (click)="editar(element.id)"><a><mat-icon>edit</mat-icon></a></td>
   </ng-container>
 
   <ng-container matColumnDef="remove">

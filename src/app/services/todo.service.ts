@@ -22,16 +22,26 @@ export class TodoService {
   }
 
   atualizar(todo: TodoModel) {
-    let todos = this.listaTodos();
-
-    todos.forEach((todo) => console.log(JSON.stringify(todo)));
-    todos.forEach((t, index, todos) => {
-      if (todo.id === todo.id) {
+    // let todos = this.listaTodos();
+    // console.log(todo)
+    // //todos.forEach((todo) => console.log(JSON.stringify(todo)));
+    // todos.forEach((t, index, todos) => {
+    //   if (todo.id === t.id) {
+    //     todos[index] = todo;
+    //     let teste = 0;
+    //     console.log("achou",teste++)
+    //   }
+    // });
+    const todos:TodoModel[] = this.listaTodos();
+    todos.forEach((obj, index, todos) => {
+      if(todo.id === obj.id) {
         todos[index] = todo;
       }
     });
 
-    localStorage.setItem('number', JSON.stringify(todos));
+
+    console.log(todos)
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
   listarPorID(id:string):TodoModel{
     const todos:TodoModel[] = this.listaTodos();
