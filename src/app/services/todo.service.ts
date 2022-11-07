@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-const API_URL = 'http://localhost:8088';
+const API_URL = 'http://localhost:8080';
 const HTTP_OPTIONS = {
   headers: new HttpHeaders(
     {'Content-Type':'application/json;charset=utf-8'}
@@ -31,6 +31,7 @@ export class TodoService {
   }
 
   localizarPorID(id:string):Observable<TodoModel>{
+
     return this.http.get<TodoModel>(`${API_URL}/app/todo/${id}`);
   }
 
@@ -46,6 +47,6 @@ export class TodoService {
   }
 
   listar():Observable<TodoModel[]>{
-    return this.http.get<TodoModel[]>(`${API_URL}/app/todo`);
+    return this.http.get<TodoModel[]>(`${API_URL}/app/todos`);
   }
 }
