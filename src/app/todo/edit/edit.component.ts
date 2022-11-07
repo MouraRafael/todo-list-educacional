@@ -26,7 +26,14 @@ export class EditComponent implements OnInit {
     const id = this.route.snapshot.params['id']
     this.id = id;
 
-    this.todo = this.service.listarPorID(id)
+    this.service.localizarPorID(id).subscribe({
+      next: (todo:TodoModel)=>{
+        this.todo = todo;
+      },
+      error: (err)=>{
+        console.log(err)
+      }
+  });
     console.log(this.todo);
 
     this.todoForm = this.formBuilder.group({
@@ -50,7 +57,17 @@ export class EditComponent implements OnInit {
     this.todo.nome = this.todoForm.get('nome')!.value
     this.todo.status = +this.todoForm.get('status')!.value;
 
-    this.service.atualizar(this.todo);
+    this.service.atualizar(this.todo).subscribe({
+      next: ()=>{
+        this.todoForm.reset();
+        this.msg= "atualizado com sucesso"
+      },
+      error: (err)=>{
+        console.log(err);
+        this.todoForm.reset();
+        this.msg = "Falha ao atualizar";
+      }
+  });;
 
     this.msg = "Atualizado com sucesso!";
   }

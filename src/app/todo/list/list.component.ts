@@ -31,7 +31,14 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.todos = this.todoService.listaTodos()
+    this.todoService.listar().subscribe({
+      next: (todoList:TodoModel[])=>{
+        this.todos = todoList;
+      },
+      error: (err)=>{
+        console.log(err)
+      }
+  })
     this.dataSource = new MatTableDataSource(this.todos)
   }
   listar():TodoModel[]{
@@ -39,7 +46,12 @@ export class ListComponent implements OnInit {
   }
 
   remover(id:string):void{
-    this.todoService.remover(id);
+    this.todoService.remover(id).subscribe({
+      next: ()=>{},
+      error: (err)=>{
+        console.log(err)
+      }
+  });
   }
 
   todoStatusLabel(status:number):string{

@@ -31,13 +31,21 @@ export class CreateComponent implements OnInit {
 
   cadastrar() {
     const todo = this.todoForm.getRawValue() as TodoModel;
-    todo.dataCriacao = new Date();
     todo.status = TodoStatus.PENDENTE;
 
 
-    this.todoService.cadastrar(todo);
+    this.todoService.cadastrar(todo).subscribe({
+      next: () => {
+        this.todoForm.reset();
+        this.msg = "Cadastrado com sucesso"},
+      error: (err) => {
+        console.error(err);
+        this.todoForm.reset();
+        this.msg = "Falha ao Cadastrar"
+      }
+   });
 
-    this.msg = "Cadastrado com sucesso"
+
   }
 
   get nome() {
