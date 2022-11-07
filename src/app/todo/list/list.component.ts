@@ -34,12 +34,12 @@ export class ListComponent implements OnInit {
     this.todoService.listar().subscribe({
       next: (todoList:TodoModel[])=>{
         this.todos = todoList;
+        this.dataSource = new MatTableDataSource(this.todos)
       },
       error: (err)=>{
         console.log(err)
       }
   })
-    this.dataSource = new MatTableDataSource(this.todos)
   }
   listar():TodoModel[]{
     return this.todos;

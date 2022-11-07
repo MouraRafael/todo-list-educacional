@@ -29,6 +29,7 @@ export class EditComponent implements OnInit {
     this.service.localizarPorID(id).subscribe({
       next: (todo:TodoModel)=>{
         this.todo = todo;
+        this.loadForm(this.todo);
       },
       error: (err)=>{
         console.log(err)
@@ -49,7 +50,7 @@ export class EditComponent implements OnInit {
       ]
     })
 
-    this.loadForm(this.todo);
+
   }
 
   editar():void{
